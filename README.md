@@ -11,11 +11,11 @@
 
 ## Motivation
 
-> Learn how to design large-scale systems.
+> Learn to design large-scale systems.
 >
 > Prep for the system design interview.
 
-### Learn how to design large-scale systems
+### Learn to design large-scale systems
 
 Learning how to design scalable systems will help you become a better engineer.
 
@@ -23,15 +23,15 @@ System design is a broad topic.  There is a **vast amount of resources scattered
 
 This repo is an **organized collection** of resources to help you learn how to build systems at scale.
 
-### Learn from the open source community
+### Learn from the open source community:
 
 This is a continually updated, open source project.
 
 [Contributions](#contributing) are welcome!
 
-### Prep for the system design interview
+### Preparation for the system design interview
 
-In addition to coding interviews, system design is a **required component** of the **technical interview process** at many tech companies.
+In addition to coding interviews, the system design is a **required component** of the **technical interview process** at many tech companies.
 
 **Practice common system design interview questions** and **compare** your results with **sample solutions**: discussions, code, and diagrams.
 
@@ -88,7 +88,7 @@ Review the [Contributing Guidelines](CONTRIBUTING.md).
 
 ## Index of system design topics
 
-> Summaries of various system design topics, including pros and cons.  **Everything is a trade-off**.
+> Summary of various system design topics, including pros and cons.  **Everything is a trade-off**.
 >
 > Each section contains links to more in-depth resources.
 
@@ -900,7 +900,7 @@ Federation (or functional partitioning) splits up databases by function.  For ex
   <i><a href=http://www.slideshare.net/jboner/scalability-availability-stability-patterns/>Source: Scalability, availability, stability, patterns</a></i>
 </p>
 
-Sharding distributes data across different databases such that each database can only manage a subset of the data.  Taking a users database as an example, as the number of users increases, more shards are added to the cluster.
+Sharding distributes data across different databases such that each database can only manage a subset of the data.  Taking the users database as an example, as the number of users increases, more shards are added to the cluster.
 
 Similar to the advantages of [federation](#federation), sharding results in less read and write traffic, less replication, and more cache hits.  Index size is also reduced, which generally improves performance with faster queries.  If one shard goes down, the other shards are still operational, although you'll want to add some form of replication to avoid data loss.  Like federation, there is no single central master serializing writes, allowing you to write in parallel with increased throughput.
 
@@ -1004,9 +1004,9 @@ In addition to choosing between [SQL or NoSQL](#sql-or-nosql), it is helpful to 
 
 > Abstraction: hash table
 
-A key-value store generally allows for O(1) reads and writes and is often backed by memory or SSD.  Data stores can maintain keys in [lexicographic order](https://en.wikipedia.org/wiki/Lexicographical_order), allowing efficient retrieval of key ranges.  Key-value stores can allow for storing of metadata with a value.
+A key-value store generally allows for O(1) reads and writes and is often backed by memory or SSD.  Data stores can maintain keys in [lexicographic order](https://en.wikipedia.org/wiki/Lexicographical_order), allowing efficient retrieval of key ranges.  Key-value stores can allow for storing metadata with a value.
 
-Key-value stores provide high performance and are often used for simple data models or for rapidly-changing data, such as an in-memory cache layer.  Since they offer only a limited set of operations, complexity is shifted to the application layer if additional operations are needed.
+Key-value stores provide high performance and are often used for simple data models or for rapidly changing data, such as an in-memory cache layer.  Since they offer only a limited set of operations, complexity is shifted to the application layer if additional operations are needed.
 
 A key-value store is the basis for more complex systems such as a document store, and in some cases, a graph database.
 
@@ -1023,7 +1023,7 @@ A key-value store is the basis for more complex systems such as a document store
 
 A document store is centered around documents (XML, JSON, binary, etc), where a document stores all information for a given object.  Document stores provide APIs or a query language to query based on the internal structure of the document itself.  *Note, many key-value stores include features for working with a value's metadata, blurring the lines between these two storage types.*
 
-Based on the underlying implementation, documents are organized by collections, tags, metadata, or directories.  Although documents can be organized or grouped together, documents may have fields that are completely different from each other.
+Based on the underlying implementation, documents are organized by collections, tags, metadata, or directories.  Although documents can be organized or grouped, they may have fields that are completely different from each other.
 
 Some document stores like [MongoDB](https://www.mongodb.com/mongodb-architecture) and [CouchDB](https://blog.couchdb.org/2016/08/01/couchdb-2-0-architecture/) also provide a SQL-like language to perform complex queries.  [DynamoDB](http://www.read.seas.harvard.edu/~kohler/class/cs239-w08/decandia07dynamo.pdf) supports both key-values and documents.
 
@@ -1048,7 +1048,7 @@ Document stores provide high flexibility and are often used for working with occ
 
 A wide column store's basic unit of data is a column (name/value pair).  A column can be grouped in column families (analogous to a SQL table).  Super column families further group column families.  You can access each column independently with a row key, and columns with the same row key form a row.  Each value contains a timestamp for versioning and for conflict resolution.
 
-Google introduced [Bigtable](http://www.read.seas.harvard.edu/~kohler/class/cs239-w08/chang06bigtable.pdf) as the first wide column store, which influenced the open-source [HBase](https://www.edureka.co/blog/hbase-architecture/) often-used in the Hadoop ecosystem, and [Cassandra](http://docs.datastax.com/en/cassandra/3.0/cassandra/architecture/archIntro.html) from Facebook.  Stores such as BigTable, HBase, and Cassandra maintain keys in lexicographic order, allowing efficient retrieval of selective key ranges.
+Google introduced [Bigtable](http://www.read.seas.harvard.edu/~kohler/class/cs239-w08/chang06bigtable.pdf) as the first wide column store, which influenced the open-source [HBase](https://www.edureka.co/blog/hbase-architecture/) often used in the Hadoop ecosystem, and [Cassandra](http://docs.datastax.com/en/cassandra/3.0/cassandra/architecture/archIntro.html) from Facebook.  Stores such as BigTable, HBase, and Cassandra maintain keys in lexicographic order, allowing efficient retrieval of selective key ranges.
 
 Wide column stores offer high availability and high scalability.  They are often used for very large data sets.
 
